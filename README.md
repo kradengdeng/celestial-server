@@ -1,176 +1,119 @@
-<div align="center">
+<h1 align="center">Celestial Server</h1>
 
-# Celestial Server
+<p align="center"><strong>A clean, fast terminal app for managing your Minecraft Java server.</strong><br>
+Built with Rust. Start servers, manage world backups, and share access with trusted managers.</p>
 
-**A fast, good-looking terminal app for running and managing Minecraft Java servers.** Built in Rust. Backups, remote managers, Playit tunnels. Windows and Linux.
-
-<p>
-  <img src="https://img.shields.io/badge/Rust-built%20with-orange?style=flat&logo=rust&logoColor=white" alt="Rust">
-  <img src="https://img.shields.io/badge/Windows-10%20%7C%2011-0078D6?style=flat" alt="Windows 10 | 11">
-  <img src="https://img.shields.io/badge/Linux-supported-FCC624?style=flat&logo=linux&logoColor=black" alt="Linux">
-  <img src="https://img.shields.io/badge/Minecraft-Java-62B47A?style=flat" alt="Minecraft Java">
-  <img src="https://img.shields.io/badge/tunnel-Playit-8A2BE2?style=flat" alt="Playit">
-  <img src="https://img.shields.io/badge/license-MIT-blue?style=flat" alt="MIT License">
-  <a href="https://github.com/kradengdeng/celestial-server/releases">
-    <img src="https://img.shields.io/github/v/release/kradengdeng/celestial-server?style=flat&label=version&color=4c1" alt="Latest release">
-  </a>
+<p align="center">
+  <a href="https://github.com/kradengdeng/celestial-server/releases"><img src="https://img.shields.io/github/v/release/kradengdeng/celestial-server?display_name=tag&label=release&color=8b5cf6" alt="Latest release"></a>
+  <img src="https://img.shields.io/badge/Windows-10%20%7C%2011-0078D4" alt="Windows 10 and 11">
+  <img src="https://img.shields.io/badge/Linux-supported-222222?logo=linux" alt="Linux supported">
+  <img src="https://img.shields.io/badge/built%20with-Rust-orange?logo=rust" alt="Built with Rust">
+  <img src="https://img.shields.io/badge/license-proprietary-555555" alt="Proprietary software">
 </p>
 
-<img src="assets/screenshot.png" alt="Celestial Server showing its required update screen" width="760">
-
-<p><em>Celestial Server's required update screen</em></p>
-
-<p>
-  <a href="#download">Download</a> |
-  <a href="#quick-start">Quick start</a> |
-  <a href="#controls">Controls</a> |
-  <a href="#sharing-access-with-managers">Sharing</a> |
-  <a href="#updates">Updates</a> |
-  <a href="#data-and-privacy">Data</a> |
-  <a href="#troubleshooting">Troubleshooting</a>
+<p align="center">
+  <img src="assets/screenshot.png" alt="Celestial Server terminal showing the update screen" width="900">
 </p>
 
-</div>
-
-> **Note:** This project is under active development. Keep a recent backup of your Minecraft world before changing server files or updating.
+<p align="center">
+  <a href="https://github.com/kradengdeng/celestial-server/releases">Download</a> ·
+  <a href="#controls">Controls</a> ·
+  <a href="#settings">Settings</a> ·
+  <a href="#updates">Updates</a>
+</p>
 
 ## Features
 
 | Feature | Description |
 | --- | --- |
-| **One terminal interface** | Start, stop, restart, and monitor a Minecraft Java server in one place. |
-| **Live monitoring** | Server logs, player activity, uptime, and system resource usage. |
-| **Console** | Press `/` to run server console commands without leaving the app. |
-| **World backups** | Size and time estimates, plus control over how many backups are kept. |
-| **Manager access** | Invite up to five managers with one-time codes that rotate automatically. |
-| **Permissions** | Grant per-manager permissions and block specific console commands. |
-| **Join tab** | Connect remotely to a host and reconnect to saved sessions. |
-| **Playit and webhooks** | Configure Playit tunnels and Discord-compatible webhooks. |
-| **Auto-update** | Checks GitHub releases and installs updates, keeping your settings and data. |
+| Terminal interface | Colorful, keyboard-driven TUI for Windows and Linux. |
+| Server controls | Start, stop, restart, and run console commands. |
+| Live monitoring | Follow logs, players, uptime, and system resource usage. |
+| World backups | Create backups while the server is stopped; set how many to keep. |
+| Manager access | Share one-time invite codes with up to five trusted managers. |
+| Permissions | Grant managers specific actions and block selected console commands. |
+| Remote join | Reconnect to saved sessions from the Join tab. |
+| Playit and webhooks | Configure a Playit tunnel and Discord-compatible notifications. |
+| Required updates | Check the official GitHub repository at startup and install new releases. |
 
-## Download
+## Install and run
 
-Get the latest release from the [Releases page](https://github.com/kradengdeng/celestial-server/releases).
+Download the latest release from [GitHub Releases](https://github.com/kradengdeng/celestial-server/releases), extract it, and run `celestial-server.exe` from a terminal. On first launch, follow setup to select your Minecraft server folder and Java executable.
 
-**Windows:** extract the archive and run `celestial-server.exe` in a terminal.
-
-**Linux:** download the matching asset, then:
+On Linux, download the Linux release asset and run:
 
 ```sh
 chmod +x celestial-server
 ./celestial-server
 ```
 
-On first launch, Celestial creates its configuration and data directory automatically and asks for your Minecraft server folder and Java executable.
-
 ### Requirements
 
-| Requirement | Details |
-| --- | --- |
-| OS | Windows 10/11 or a supported Linux distribution |
-| Java | Installed and compatible with your Minecraft server version |
-| Server file | A Minecraft server `.jar` |
-| Remote access | A TCP tunnel forwarding to the share port (Playit supported) |
-| Rust toolchain | Only if building from source |
-
-### Build from source
-
-```sh
-git clone https://github.com/kradengdeng/celestial-server.git
-cd celestial-server
-cargo build --release
-```
-
-The binary is created in `target/release/` (`celestial-server.exe` on Windows).
+- Windows 10/11 or a supported Linux distribution.
+- Java compatible with your Minecraft server version.
+- A Minecraft Java server `.jar` file.
+- For manager access over the internet, a TCP tunnel forwarding to the configured share port (Playit is supported).
 
 ## Quick start
 
-1. Launch Celestial and select your Minecraft server folder.
-2. In **Settings**, set the server `.jar` and Java path if they were not detected.
-3. Open `eula.txt` in your server folder, review the Minecraft EULA, and accept it.
-4. On the **Main** tab, press `S` to start the server.
-5. Open the **Server** tab to watch logs. Press `/` to enter a console command.
-6. Stop the server, then press `B` on the Main tab to create a backup.
+1. Launch Celestial and choose your Minecraft server folder.
+2. In **Settings**, check the server `.jar` and Java path.
+3. Accept the Minecraft EULA in the server folder.
+4. Press **S** on **Main** to start the server.
+5. Open **Server** to follow logs; press `/` to type a console command.
+6. Stop the server, then press **B** on **Main** to create a world backup.
 
-> Backups can only be created while the server is stopped.
+## Share access with managers
+
+1. Configure a TCP tunnel to forward to `127.0.0.1:25580` (or the share port shown in Settings). Set the public endpoint in **Share address**.
+2. Open **Share** and give a trusted manager the endpoint and one-time invite code. Codes rotate automatically; **F6** creates a new one.
+3. On the manager's computer, open **Join**, press **Enter**, and enter the endpoint and invite code when prompted.
+4. Managers start with no permissions. Select a manager and press **F4** to grant the actions they need.
+
+Hosts can pause access, extend a manager's time, or revoke access. Managers cannot create backups.
 
 ## Controls
 
 | Action | Keys |
 | --- | --- |
 | Switch tabs | `1`–`6`, `F1`–`F6`, `Tab` / `Shift+Tab` |
-| Start / stop / restart server | `S` / `X` / `R` |
+| Start / stop / restart | `S` / `X` / `R` |
 | Create backup | `B` |
 | Connect / disconnect Playit | `P` / `O` |
-| Enter a console command | `/`, then `Enter` to run or `Esc` to cancel |
-| Scroll server logs | `Page Up` / `Page Down`; `End` to return to the bottom |
-| Edit manager permissions (Share) | `F4` |
-| Generate a new invite code (Share) | `F6` |
+| Enter server command | `/`, then `Enter` to run or `Esc` to cancel |
+| Scroll logs | `Page Up` / `Page Down`; `End` returns to the bottom |
+| Edit manager permissions | `F4` on Share |
+| Create invite code | `F6` on Share |
 | Quit | `Ctrl+C` |
 
-Tab numbers and function keys use physical key position, so they work across keyboard layouts.
+Tab numbers and function keys work across keyboard layouts.
 
-## Sharing access with managers
+## Settings
 
-A host can grant limited server controls to up to five managers.
-
-**Host**
-
-1. Configure a TCP tunnel forwarding to `127.0.0.1:25580` (or the port shown in Settings).
-2. Enter the tunnel's public address in **Share address** (Settings).
-3. Open **Share** and send the manager the displayed address and one-time invite code. Press `F6` for a new code.
-
-**Manager**
-
-1. Open **Join** and press `Enter`.
-2. Enter the host's address and invite code when prompted.
-
-**Permissions**
-
-| Rule | Details |
-| --- | --- |
-| Default | New managers start with no permissions. Select one in **Share** and press `F4` to grant actions. |
-| Commands | Console commands can be restricted by command name. |
-| Backups | Managers cannot create backups. |
-| Host control | Pause access, extend access time, or revoke access at any time. |
+Celestial settings cover server folder and jar, Java, RAM limits, restart behavior, Playit, manager access, invite rotation, share address, backup retention, and interface accent color. Settings save automatically. The release update source is locked to `kradengdeng/celestial-server`.
 
 ## Updates
 
-Celestial checks `kradengdeng/celestial-server` releases on startup. When a newer release exists, the update screen requires installing it before continuing.
+Celestial checks the `kradengdeng/celestial-server` GitHub releases on startup. If a newer version is available, you must install it before continuing. When the release provides a `.sha256` checksum, the updater verifies the download. Updates preserve Celestial data and restart the app after installation. An internet connection is required.
 
-| Behavior | Details |
-| --- | --- |
-| Your data | Configuration and server data are kept. |
-| Verification | A published `.sha256` checksum is verified when the release provides one. |
-| Restart | Celestial restarts automatically after installing. |
-| Network | Internet is required for the check and download. |
+## Data and troubleshooting
 
-## Data and privacy
+Celestial stores its configuration, manager records, join details, audit log, and backups under:
 
-Celestial stores configuration, manager records, join details, audit log, and backups here:
+- Windows: `%APPDATA%\CelestialServer` (backups are in its `backups` folder).
+- Linux: `$XDG_CONFIG_HOME/CelestialServer` or `~/.config/CelestialServer` (backups are in `backups`).
 
-| Platform | Default location |
-| --- | --- |
-| Windows | `%APPDATA%\CelestialServer` |
-| Linux | `$XDG_CONFIG_HOME/CelestialServer` or `~/.config/CelestialServer` |
+Set `CELESTIAL_DATA_DIR` to use a different location. Keep this folder private because it can contain access credentials and server management information.
 
-Set `CELESTIAL_DATA_DIR` to use a different directory.
-
-> **Warning:** Never share this directory publicly. It can contain access credentials and server management information.
-
-## Troubleshooting
-
-| Problem | Fix |
-| --- | --- |
-| Java not found | Install a compatible Java version and set its executable path in **Settings**. |
-| Server port already in use | Stop the other process using the port, or change it in `server.properties`. |
-| Managers cannot connect | Check that the tunnel forwards to the local share port and the public address is correct. |
-| Keyboard input issues | Set `CELESTIAL_INPUT_LOG=1` before starting. Key events are logged in the data directory. |
+- **Java not found:** Install a compatible Java version and set its executable path in Settings.
+- **Port already in use:** Stop the other process using the Minecraft server port or change it in `server.properties`.
+- **Managers cannot connect:** Check the TCP tunnel, local share port, and public address.
+- **Keyboard input issues:** Set `CELESTIAL_INPUT_LOG=1` before launch; received key events are written to `input.log` in the data folder.
 
 ## License
 
-Licensed under the MIT License. See [LICENSE](LICENSE).
+Celestial Server is proprietary software and is not distributed under an open-source license. No open-source license is granted by this repository. For licensing questions, contact [@kradengdeng](https://github.com/kradengdeng).
 
 ## Credits
 
-Created by [@kradengdeng](https://github.com/kradengdeng).
+Made by [@kradengdeng](https://github.com/kradengdeng).
