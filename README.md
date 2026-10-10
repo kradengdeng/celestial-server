@@ -16,7 +16,7 @@
   </a>
 </p>
 
-<img src="assets/celestial-server-update-screen.png" alt="Celestial Server showing its required update screen" width="760">
+<img src="assets/screenshot.png" alt="Celestial Server showing its required update screen" width="760">
 
 <p><em>Celestial Server's required update screen</em></p>
 
